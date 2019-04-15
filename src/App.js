@@ -35,16 +35,21 @@ class App extends Component {
     const title = this.state.title
 
     if (/\S/.test(title)) {
-      console.log("Formulaire rendu");
-      this.setState({globalTitle: `Mon formulaire - ${title}`})
-    }else{
+      this.setState({ globalTitle: `Mon formulaire - ${title}` })
+    } else {
       alert("Input field can't be empty")
     }
     event.preventDefault()
   }
 
-  componentDidUpdate(){
-    console.log("Titre changé");
+  componentDidMount() {
+    console.log("Formulaire rendu");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.globalTitle !== this.state.globalTitle) {
+      console.log('Titre changé')
+    }
   }
 
   render() {
